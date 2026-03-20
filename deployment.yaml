@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zypher-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: zypher-app
+
+  template:
+    metadata:
+      labels:
+        app: zypher-app
+
+    spec:
+      containers:
+      - name: zypher-container
+        image: yourdockerhub/zypher-app:v1
+
+        ports:
+        - containerPort: 5000
